@@ -20,7 +20,7 @@
                         </div>
                         
                         <h5 class="title ">{{ $product->name }}</h5>
-                        <span>Share <strong>{{ $product->shares }} times</strong> and get <strong>%{{ $product->discount }} discount!</strong></span>
+                        <span>Share <strong>{{ $product->shares }} times</strong> and get <strong class="text-success">%{{ $product->discount }} discount!</strong></span>
                     </div>
                     <div class="card-footer">
                         <div class="d-grid">

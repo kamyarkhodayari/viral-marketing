@@ -4,10 +4,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <meta name="description" content="@yield('meta_description', 'Student vintage store to buy cheap second-hand items.')" />
+
+        <meta property="og:title" content="@yield('og_title', config('app.name'))" />
+        <meta property="og:url" content="{{ request()->url() }}" />
+        <meta property="og:description" content="@yield('meta_description', 'Student vintage store to buy cheap second-hand items.')" />
+        <meta property="og:image" content="@yield('og_image')" />
+
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name') }} - @yield('title', 'Get your discount today!')</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">

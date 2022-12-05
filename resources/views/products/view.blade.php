@@ -1,5 +1,9 @@
 @extends('layouts.app.layout')
 
+@section('title', $product->name)
+@section('og_title', config('app.name') . ' - ' . $product->name)
+@section('og_image', $product->images->where('is_cover')->first()->url)
+
 @section('app')
     <div class="row">
         <div class="col-lg-4 mb-4 mb-lg-0">
@@ -21,7 +25,7 @@
                         @endforeach
                     </div>
 
-                    <div class="text-center">Share <strong>{{ $product->shares }} times</strong> and get %{{ $product->discount }} discount!</div>
+                    <div class="text-center">Share <strong>{{ $product->shares }} times</strong> and get <strong class="text-success">%{{ $product->discount }} discount!</strong></div>
                     <div class="divider">
                         <span>OR</span>
                     </div>
