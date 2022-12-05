@@ -8,7 +8,7 @@
 
     <div class="row products">
         @foreach(App\Models\Product::orderByRaw("price * ((100 - discount) / 100) ASC")->get() as $product)
-            <div class="col-lg-3 mb-3 mb-lg-0">
+            <div class="col-lg-3 mb-3">
                 <div class="card product">
                     <div class="card-body">
                         <div class="cover">
