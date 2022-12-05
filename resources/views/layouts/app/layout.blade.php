@@ -2,7 +2,7 @@
 
 @section('content')
     @include('layouts.app.navbar')
-    <div class="wrapper container py-5">
+    <div class="wrapper container py-5 mb-5">
         @yield('app')
     </div>
 

@@ -24,7 +24,7 @@ Auth::routes();
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Route::prefix('products')->group(function () {
     Route::get('/view/{product}', [FrontProductsController::class, 'show']);

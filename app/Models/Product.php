@@ -27,6 +27,11 @@ class Product extends Model
         return $this->hasMany('App\Models\Image', 'product_id');
     }
 
+    public function sharings()
+    {
+        return $this->hasMany('App\Models\Share', 'product_id');
+    }
+
     public function getCoverAttribute()
     {
         if(!$this->images->where('is_cover', true)->isEmpty()) {

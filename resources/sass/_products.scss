@@ -44,7 +44,7 @@
                 transition: all 0.3s ease;
             }
 
-            &:hover {
+            &.active, &:hover {
                 img {
                     border-color: #212529;
                 }

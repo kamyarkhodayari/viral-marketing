@@ -31,4 +31,28 @@
             border: 1px solid #ced4da;
         }
     }
+
+    .divider {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        padding: 1rem 0;
+
+        span {
+            display: block;
+            background-color: #fff;
+            padding: 0px 10px;
+            z-index: 10;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0px;
+            right: 0px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 1px dashed #ced4da;
+        }
+    }
 }
