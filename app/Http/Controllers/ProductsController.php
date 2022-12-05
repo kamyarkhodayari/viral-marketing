@@ -12,7 +12,7 @@ class ProductsController extends Controller
     public function show(Product $product)
     {
         $user_id = request()->input('user');
-        if(User::where('id', $user_id)->exists()) {
+        if(User::where('id', $user_id)->exists() && !\Auth::user()) {
             //Check ip address
             $ip_address = request()->ip();
             $agent = request()->header('User-Agent');

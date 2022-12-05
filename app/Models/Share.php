@@ -15,4 +15,14 @@ class Share extends Model
         'ip_address',
         'agent'
     ];
+
+    public function product()
+    {
+        return $this->hasOne('App\Models\Product', 'id', 'product_id')->withDefault();
+    }
+
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'user_id')->withDefault();
+    }
 }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\Panel\UsersController;
 use App\Http\Controllers\Panel\ProductsController;
+use App\Http\Controllers\Panel\SharesController;
 
 //Front
 use App\Http\Controllers\ProductsController as FrontProductsController;
@@ -46,5 +47,9 @@ Route::prefix('panel')->middleware(['auth'])->group(function () {
 
         Route::post('/create', [ProductsController::class, 'store']);
         Route::post('/edit/{product}', [ProductsController::class, 'update']);
+    });
+
+    Route::prefix('shares')->group(function () {
+        Route::get('/', [SharesController::class, 'index'])->name('panel_shares');
     });
 });

@@ -13,13 +13,19 @@
                 @auth
                     @can('index', App\Models\User::class)
                         <li class="nav-item">
-                            <a href="{{ route('panel_users') }}" class="nav-link">Users</a>
+                            <a href="{{ route('panel_users') }}" class="nav-link @if(Route::currentRouteName() == 'panel_users') active @endif">Users</a>
                         </li>
                     @endcan
 
                     @can('index', App\Models\Product::class)
                         <li class="nav-item">
-                            <a href="{{ route('panel_products') }}" class="nav-link">Products</a>
+                            <a href="{{ route('panel_products') }}" class="nav-link @if(Route::currentRouteName() == 'panel_products') active @endif">Products</a>
+                        </li>
+                    @endcan
+
+                    @can('index', App\Models\Share::class)
+                        <li class="nav-item">
+                            <a href="{{ route('panel_shares') }}" class="nav-link @if(Route::currentRouteName() == 'panel_shares') active @endif">Shares</a>
                         </li>
                     @endcan
                 @endauth
