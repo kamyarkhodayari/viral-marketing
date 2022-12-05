@@ -15,7 +15,7 @@
                             <img src="{{ $product->cover }}" alt="{{ $product->name }}">
                             <div class="caption">
                                 <span class="price text-muted">€ {{ $product->price }}</span>
-                                <h4 class="final-price fw-bold mb-0">€ {{ $product->price * (1 - $product->discount / 100) }}</h4>
+                                <h4 class="final-price fw-bold mb-0">€ {{ round($product->price * (1 - $product->discount / 100), 2) }}</h4>
                             </div>
                         </div>
                         
