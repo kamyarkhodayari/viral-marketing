@@ -56,7 +56,7 @@
                         @if($product->sharings->where('user_id', auth()->user()->id)->isEmpty())
                             <h5 class="mb-0">Start sharing now!</h5>
                         @else
-                            <h5 class="mb-0">You shared this product <span class="fw-bolder">{{ $product->sharings->where('user_id', auth()->user()->id)->count() }} times!</span></h5>
+                            <h5 class="mb-0">You shared this product <span class="fw-bolder">{{ $product->sharings->where('user_id', auth()->user()->id)->count() }} time(s)!</span></h5>
                         @endif
                         
                         <span>{{ $product->shares - $product->sharings->where('user_id', auth()->user()->id)->count() }} to go.</span>
