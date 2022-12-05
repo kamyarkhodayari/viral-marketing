@@ -59,11 +59,11 @@
                     </div>
                     <div class="card-body">
                         <div class="row gx-3 gy-2 align-items-end">
-                            <div class="col-10">
+                            <div class="col-lg-10">
                                 <label for="personal_link">Your personal link for this product</label>
                                 <input type="text" name="personal_link" class="form-control" value="{{ url('/products/view/'.$product->id.'?user='.auth()->user()->id) }}" readonly>
                             </div>
-                            <div class="col-2">
+                            <div class="col-lg-2">
                                 <div class="d-grid">
                                     <a href="#" id="copyToClipboard" class="btn btn-dark">Copy</a>
                                 </div>

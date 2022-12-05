@@ -7,7 +7,7 @@
     </div>
 
     <div class="row products">
-        @foreach(App\Models\Product::all() as $product)
+        @foreach(App\Models\Product::orderByRaw("price * ((100 - discount) / 100) ASC")->get() as $product)
             <div class="col-lg-3 mb-3 mb-lg-0">
                 <div class="card product">
                     <div class="card-body">
@@ -20,7 +20,7 @@
                         </div>
                         
                         <h5 class="title ">{{ $product->name }}</h5>
-                        <span>Share <strong>{{ $product->shares }} times</strong> and get %{{ $product->discount }} discount!</span>
+                        <span>Share <strong>{{ $product->shares }} times</strong> and get <strong>%{{ $product->discount }} discount!</strong></span>
                     </div>
                     <div class="card-footer">
                         <div class="d-grid">
