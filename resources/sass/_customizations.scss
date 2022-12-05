@@ -1,6 +1,10 @@
 #app {
     @import './products';
 
+    #mainNavbar {
+        background-color: #ecf0f1;
+    }
+
     .card {
         border-radius: 10px;
         border: none;
