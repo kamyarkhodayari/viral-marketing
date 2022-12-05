@@ -3,7 +3,7 @@
 @section('app')
     <div class="container py-5">
         <div class="header mb-5">
-            <h1 class="heading-1 fw-bolder">Viral marketing platform</h1>
+            <h1 class="heading-1 fw-bolder">{{ config('app.name') }}</h1>
             <h5>Get your discount today!</h5>
         </div>
         
