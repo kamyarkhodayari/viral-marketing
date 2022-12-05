@@ -6,6 +6,9 @@ use App\Http\Controllers\PanelController;
 use App\Http\Controllers\Panel\UsersController;
 use App\Http\Controllers\Panel\ProductsController;
 
+//Front
+use App\Http\Controllers\ProductsController as FrontProductsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +24,10 @@ Auth::routes();
 
 Route::get('/', function () {
     return view('index');
+});
+
+Route::prefix('products')->group(function () {
+    Route::get('/view/{product}', [FrontProductsController::class, 'show']);
 });
 
 
