@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PanelController;
+use App\Http\Controllers\Panel\ProductsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +16,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+
+Route::prefix('panel')->middleware(['auth'])->group(function () {
+    Route::get('/', [PanelController::class, 'index'])->name('panel');
+
+    Route::prefix('products')->group(function () {
+        Route::get('/', [ProductsController::class, 'index'])->name('panel_products');
+        Route::get('/create', [ProductsController::class, 'create']);
+        Route::get('/edit/{product}', [ProductsController::class, 'edit']);
+
+        Route::post('/create', [ProductsController::class, 'store']);
+        Route::post('/edit/{product}', [ProductsController::class, 'update']);
+    });
 });

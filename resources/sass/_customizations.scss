@@ -1,0 +1,30 @@
+#app {
+    @import './products';
+
+    .card {
+        border-radius: 10px;
+        border: none;
+
+        .card-header {
+            background: transparent;
+            padding-top: 1rem;
+        }
+
+        .card-footer {
+            background: transparent;
+            border-top: none;
+            padding-top: 0px;
+            padding-bottom: 1rem;
+        }
+    }
+
+    .thumbnail {
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid #ced4da;
+        }
+    }
+}
