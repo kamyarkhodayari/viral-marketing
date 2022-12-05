@@ -8,7 +8,7 @@
 
     <div class="row products">
         @foreach(App\Models\Product::all() as $product)
-            <div class="col-lg-3">
+            <div class="col-lg-3 mb-3 mb-lg-0">
                 <div class="card product">
                     <div class="card-body">
                         <div class="cover">
