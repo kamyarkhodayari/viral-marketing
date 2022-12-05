@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PanelController;
+use App\Http\Controllers\Panel\UsersController;
 use App\Http\Controllers\Panel\ProductsController;
 
 /*
@@ -25,6 +26,11 @@ Route::get('/', function () {
 
 Route::prefix('panel')->middleware(['auth'])->group(function () {
     Route::get('/', [PanelController::class, 'index'])->name('panel');
+
+    Route::prefix('users')->group(function () {
+        Route::get('/', [UsersController::class, 'index'])->name('panel_users');
+        Route::get('/promote/{user}', [UsersController::class, 'promote']);
+    });
 
     Route::prefix('products')->group(function () {
         Route::get('/', [ProductsController::class, 'index'])->name('panel_products');

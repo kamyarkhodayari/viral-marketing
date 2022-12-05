@@ -11,6 +11,12 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
                 @auth
+                    @can('index', App\Models\User::class)
+                        <li class="nav-item">
+                            <a href="{{ route('panel_users') }}" class="nav-link">Users</a>
+                        </li>
+                    @endcan
+
                     @can('index', App\Models\Product::class)
                         <li class="nav-item">
                             <a href="{{ route('panel_products') }}" class="nav-link">Products</a>
