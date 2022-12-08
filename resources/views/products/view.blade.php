@@ -46,7 +46,7 @@
             @guest
                 <div class="alert alert-light" role="alert">
                     <h4 class="alert-heading">How does this work?</h4>
-                    <p>By logging in your account, or registring, you get your own link for each product. You can then start sharing the your personal link. When your link has opens as many as the limitation of your desired product, you unlock the discount for the product. You can then use your discount to purchase that product.</p>
+                    <p>By logging in your account, or registring, you get your own link for each product. You can then start sharing the your personal link. When your link has opened as many as the limitation of your desired product, you unlock the discount for the product. You can then use your discount to purchase that product.</p>
                     <hr>
                     <p class="mb-0"><a href="{{ route('login') }}">Login</a> or <a href="{{ route('register') }}">register</a> to start sharing and unlock your discount.</p>
                 </div>
