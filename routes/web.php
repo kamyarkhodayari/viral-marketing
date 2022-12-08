@@ -6,6 +6,7 @@ use App\Http\Controllers\PanelController;
 use App\Http\Controllers\Panel\UsersController;
 use App\Http\Controllers\Panel\ProductsController;
 use App\Http\Controllers\Panel\SharesController;
+use App\Http\Controllers\Panel\PurchasesController;
 
 //Front
 use App\Http\Controllers\ProductsController as FrontProductsController;
@@ -51,5 +52,11 @@ Route::prefix('panel')->middleware(['auth'])->group(function () {
 
     Route::prefix('shares')->group(function () {
         Route::get('/', [SharesController::class, 'index'])->name('panel_shares');
+    });
+
+    Route::prefix('purchases')->group(function () {
+        Route::get('/', [PurchasesController::class, 'index'])->name('panel_purchases');
+        Route::get('/create/{product}', [PurchasesController::class, 'create']);
+        Route::get('/verify/{purchase}', [PurchasesController::class, 'verify']);
     });
 });

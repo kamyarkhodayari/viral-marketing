@@ -28,6 +28,12 @@
                             <a href="{{ route('panel_shares') }}" class="nav-link @if(Route::currentRouteName() == 'panel_shares') active @endif">Shares</a>
                         </li>
                     @endcan
+
+                    @can('index', App\Models\Purchase::class)
+                        <li class="nav-item">
+                            <a href="{{ route('panel_purchases') }}" class="nav-link @if(Route::currentRouteName() == 'panel_purchases') active @endif">Purchases</a>
+                        </li>
+                    @endcan
                 @endauth
             </ul>
 

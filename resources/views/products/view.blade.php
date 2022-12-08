@@ -30,12 +30,14 @@
                         <span>OR</span>
                     </div>
                     <div class="d-grid">
-                        <a href="#" class="btn btn-dark">Buy it without discount!</a>
+                        <a href="{{ url('/panel/purchases/create/'.$product->id) }}" class="btn btn-dark">Buy it without discount!</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-8">
+            @include('flash::message')
+            
             <h1 class="title">{{ $product->name }}</h1>
             <div class="description mb-4">
                 {!! nl2br($product->description) !!}
@@ -52,28 +54,37 @@
 
             @auth
                 <div class="card">
-                    <div class="card-header">
-                        @if($product->sharings->where('user_id', auth()->user()->id)->isEmpty())
-                            <h5 class="mb-0">Start sharing now!</h5>
-                        @else
-                            <h5 class="mb-0">You shared this product <span class="fw-bolder">{{ $product->sharings->where('user_id', auth()->user()->id)->count() }} time(s)!</span></h5>
-                        @endif
-                        
-                        <span>{{ $product->shares - $product->sharings->where('user_id', auth()->user()->id)->count() }} to go.</span>
-                    </div>
-                    <div class="card-body">
-                        <div class="row gx-3 gy-2 align-items-end">
-                            <div class="col-lg-10">
-                                <label for="personal_link">Your personal link for this product</label>
-                                <input type="text" name="personal_link" class="form-control" value="{{ url('/products/view/'.$product->id.'?user='.auth()->user()->id) }}" readonly>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="d-grid">
-                                    <a href="#" id="copyToClipboard" class="btn btn-dark">Copy</a>
+                    @if(auth()->user()->shares->where('product_id', $product->id)->count() >= $product->shares)
+                        <div class="card-body">
+                            <h5 class="fw-bolder">Congrats!</h5>
+                            <p>You got the discount! You can request for purchase now.</p>
+
+                            <a href="{{ url('/panel/purchases/create/'.$product->id) }}" class="btn btn-dark">Purchase now</a>
+                        </div>
+                    @else
+                        <div class="card-header">
+                            @if(auth()->user()->shares->where('product_id', $product->id)->isEmpty())
+                                <h5 class="mb-0">Start sharing now!</h5>
+                            @else
+                                <h5 class="mb-0">You shared this product <span class="fw-bolder">{{ auth()->user()->shares->where('product_id', $product->id)->count() }} time(s)!</span></h5>
+                            @endif
+                            
+                            <span>{{ $product->shares - auth()->user()->shares->where('product_id', $product->id)->count() }} to go.</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="row gx-3 gy-2 align-items-end">
+                                <div class="col-lg-10">
+                                    <label for="personal_link">Your personal link for this product</label>
+                                    <input type="text" name="personal_link" class="form-control" value="{{ url('/products/view/'.$product->id.'?user='.auth()->user()->id) }}" readonly>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="d-grid">
+                                        <a href="#" id="copyToClipboard" class="btn btn-dark">Copy</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             @endauth
         </div>

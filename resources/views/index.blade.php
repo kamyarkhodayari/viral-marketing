@@ -6,8 +6,9 @@
         <h5>Get your discount today!</h5>
     </div>
 
+    @include('flash::message')
     <div class="row products">
-        @foreach(App\Models\Product::orderByRaw("price * ((100 - discount) / 100) ASC")->get() as $product)
+        @foreach(App\Models\Product::where('stock', '>', 0)->orderByRaw("price * ((100 - discount) / 100) ASC")->get() as $product)
             <div class="col-lg-3 mb-3">
                 <div class="card product">
                     <div class="card-body">

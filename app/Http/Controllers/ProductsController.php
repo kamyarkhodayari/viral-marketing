@@ -11,6 +11,11 @@ class ProductsController extends Controller
 {
     public function show(Product $product)
     {
+        if(!($product->stock > 0)) {
+            flash('Product '. $product->name .' is sold out.')->warning();
+            return redirect()->route('index');
+        }
+
         $user_id = request()->input('user');
         if(User::where('id', $user_id)->exists() && !\Auth::user()) {
             //Check ip address
